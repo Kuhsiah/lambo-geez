@@ -51,7 +51,7 @@ export default function Home() {
                 fill
                 priority
                 quality={100}
-                sizes="(max-width: 800px) 50vw, (max-width: 1500px) 47vw, 700px"
+                sizes="(max-width: 800px) 100vw, (max-width: 1500px) 47vw, 700px"
               />
             </div>
 
@@ -62,14 +62,9 @@ export default function Home() {
                 fill
                 priority
                 quality={100}
-                sizes="(max-width: 800px) 50vw, (max-width: 1500px) 47vw, 700px"
+                sizes="(max-width: 800px) 100vw, (max-width: 1500px) 47vw, 700px"
               />
             </div>
-          </div>
-
-          <div className="heroCopy">
-            <h1>COMING SOON.</h1>
-            <p>The next Lambo Geez collection is on the way.</p>
           </div>
         </div>
       </section>
@@ -199,7 +194,7 @@ export default function Home() {
             <h2>
               NO FOLLOWING
               <br />
-              THE HERD.
+              THE CROWD.
             </h2>
 
             <p className="brandStatement">

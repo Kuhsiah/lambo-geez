@@ -124,7 +124,7 @@ button {
   padding:
     calc(var(--header-height) + 52px)
     3vw
-    46px;
+    8px;
   background: #ffffff;
 }
 
@@ -163,29 +163,6 @@ button {
   object-position: center center;
 }
 
-.heroCopy {
-  padding-top: 28px;
-  text-align: center;
-}
-
-.heroCopy h1 {
-  margin: 0;
-  font-family: var(--font-barlow-condensed), Arial, sans-serif;
-  font-size: clamp(70px, 7.4vw, 128px);
-  font-weight: 600;
-  line-height: 0.82;
-  letter-spacing: -0.035em;
-}
-
-.heroCopy p {
-  margin: 24px 0 0;
-  font-family: var(--font-dm-sans), Arial, sans-serif;
-  font-size: 20px;
-  font-weight: 500;
-  line-height: 1.45;
-  letter-spacing: -0.025em;
-}
-
 /* =========================================================
    BRAND DIVIDER
 ========================================================= */
@@ -193,12 +170,12 @@ button {
 .brandDivider {
   width: calc(100% - 6vw);
   max-width: 1440px;
-  margin: 10px auto 0;
+  margin: 0 auto;
   display: grid;
   grid-template-columns: 1fr auto 1fr;
   align-items: center;
   gap: 28px;
-  padding: 20px 0;
+  padding: 14px 0;
 }
 
 .dividerLine {
@@ -592,7 +569,7 @@ button {
 
   .nav {
     gap: 14px;
-    font-size: 8px;
+    font-size: 10px;
   }
 
   .navLeft a:nth-child(2),
@@ -609,45 +586,88 @@ button {
     padding:
       calc(var(--header-height) + 24px)
       18px
-      34px;
+      4px;
   }
 
+  /* MOBILE HERO CROSSFADE */
+
   .heroPhotos {
-    gap: 6px;
+    position: relative;
+    display: block;
+    width: 100%;
+    height: 118vw;
+    max-height: 620px;
+    overflow: hidden;
   }
 
   .heroPhoto {
-    height: 63vw;
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    max-height: none;
+    background: #eeeeee;
+  }
+
+  .heroPhotoLeft {
+    z-index: 2;
+    opacity: 1;
+    animation: heroFadeLeft 8s ease-in-out infinite;
+  }
+
+  .heroPhotoRight {
+    z-index: 1;
+    opacity: 1;
+    animation: heroFadeRight 8s ease-in-out infinite;
   }
 
   .heroPhotoLeft img {
+    object-fit: cover;
     object-position: center top;
   }
 
   .heroPhotoRight img {
+    object-fit: cover;
     object-position: center center;
   }
 
-  .heroCopy {
-    padding-top: 22px;
-    text-align: center;
+  @keyframes heroFadeLeft {
+    0%,
+    42% {
+      opacity: 1;
+    }
+
+    50%,
+    92% {
+      opacity: 0;
+    }
+
+    100% {
+      opacity: 1;
+    }
   }
 
-  .heroCopy h1 {
-    font-size: 17vw;
-  }
+  @keyframes heroFadeRight {
+    0%,
+    42% {
+      opacity: 0;
+    }
 
-  .heroCopy p {
-    margin-top: 16px;
-    font-size: 17px;
-    line-height: 1.45;
+    50%,
+    92% {
+      opacity: 1;
+    }
+
+    100% {
+      opacity: 0;
+    }
   }
 
   .brandDivider {
     width: calc(100% - 36px);
     gap: 16px;
-    margin-top: 4px;
-    padding: 16px 0;
+    margin-top: 0;
+    padding: 10px 0;
   }
 
   .dividerCenter img {
@@ -763,5 +783,17 @@ button {
 
   .footerRight {
     align-items: flex-end;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) and (max-width: 800px) {
+  .heroPhotoLeft {
+    animation: none;
+    opacity: 1;
+  }
+
+  .heroPhotoRight {
+    animation: none;
+    opacity: 0;
   }
 }

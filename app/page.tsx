@@ -13,13 +13,70 @@ const dmSans = DM_Sans({
   variable: "--font-dm-sans",
 });
 
+const products = [
+  {
+    id: "crest-black",
+    name: "LG CREST TEE",
+    color: "BLACK",
+    alt: "LG Crest Tee Black",
+    front: "/lg-crest-black-front.png",
+    back: "/lg-crest-black-back.png",
+    className: "",
+  },
+  {
+    id: "crest-sky",
+    name: "LG CREST TEE",
+    color: "SKY",
+    alt: "LG Crest Tee Sky",
+    front: "/lg-crest-sky-front.png",
+    back: "/lg-crest-sky-back.png",
+    className: "",
+  },
+  {
+    id: "gatekeeper",
+    name: "LG GATEKEEPER SHIRT",
+    color: "TAN",
+    alt: "LG Gatekeeper Shirt Tan",
+    front: "/lg-gatekeeper-front-v3.png",
+    back: "/lg-gatekeeper-back-v3.png",
+    className: "productGatekeeper",
+  },
+  {
+    id: "track-jacket-navy",
+    name: "LG TRACK JACKET",
+    color: "NAVY",
+    alt: "LG Track Jacket Navy",
+    front: "/lg-track-jacket-navy-front.png",
+    back: "/lg-track-jacket-navy-back.png",
+    className: "",
+  },
+  {
+    id: "sweatpants-navy",
+    name: "LG SWEATPANTS",
+    color: "NAVY",
+    alt: "LG Sweatpants Navy",
+    front: "/lg-sweatpants-navy-front.png",
+    back: "/lg-sweatpants-navy-back.png",
+    className: "",
+  },
+  {
+    id: "baseball-jacket-red-cream",
+    name: "LG BASEBALL JACKET",
+    color: "RED / CREAM",
+    alt: "LG Baseball Jacket Red and Cream",
+    front: "/lg-baseball-jacket-red-cream-front.png",
+    back: "/lg-baseball-jacket-red-cream-back.png",
+    className: "",
+  },
+];
+
 export default function Home() {
   return (
     <main className={`site ${barlowCondensed.variable} ${dmSans.variable}`}>
       {/* HEADER */}
       <header className="header">
         <nav className="nav navLeft">
-          <a href="#shop">SHOP</a>
+          <a href="#new">SHOP</a>
           <a href="#new">COLLECTION</a>
         </nav>
 
@@ -93,95 +150,39 @@ export default function Home() {
         </div>
 
         <div className="productGrid">
-          {/* BLACK CREST TEE */}
-          <article className="product">
-            <div className="productImage productMockup">
-              <span className="productStatus">COMING SOON</span>
+          {products.map((product) => (
+            <article
+              key={product.id}
+              className={`product ${product.className}`.trim()}
+            >
+              <div className="productImage productMockup">
+                <span className="productStatus">COMING SOON</span>
 
-              <Image
-                className="productMockupFront"
-                src="/lg-crest-black-front.png"
-                alt="LG Crest Tee Black front"
-                fill
-                quality={100}
-                sizes="(max-width: 800px) 100vw, 33vw"
-              />
+                <Image
+                  className="productMockupFront"
+                  src={product.front}
+                  alt={`${product.alt} front`}
+                  fill
+                  quality={100}
+                  sizes="(max-width: 800px) 100vw, 33vw"
+                />
 
-              <Image
-                className="productMockupBack"
-                src="/lg-crest-black-back.png"
-                alt="LG Crest Tee Black back"
-                fill
-                quality={100}
-                sizes="(max-width: 800px) 100vw, 33vw"
-              />
-            </div>
+                <Image
+                  className="productMockupBack"
+                  src={product.back}
+                  alt={`${product.alt} back`}
+                  fill
+                  quality={100}
+                  sizes="(max-width: 800px) 100vw, 33vw"
+                />
+              </div>
 
-            <div className="productInfo">
-              <h3>LG CREST TEE</h3>
-              <p>BLACK</p>
-            </div>
-          </article>
-
-          {/* SKY CREST TEE */}
-          <article className="product">
-            <div className="productImage productMockup">
-              <span className="productStatus">COMING SOON</span>
-
-              <Image
-                className="productMockupFront"
-                src="/lg-crest-sky-front.png"
-                alt="LG Crest Tee Sky front"
-                fill
-                quality={100}
-                sizes="(max-width: 800px) 100vw, 33vw"
-              />
-
-              <Image
-                className="productMockupBack"
-                src="/lg-crest-sky-back.png"
-                alt="LG Crest Tee Sky back"
-                fill
-                quality={100}
-                sizes="(max-width: 800px) 100vw, 33vw"
-              />
-            </div>
-
-            <div className="productInfo">
-              <h3>LG CREST TEE</h3>
-              <p>SKY</p>
-            </div>
-          </article>
-
-          {/* GATEKEEPER SHIRT */}
-          <article className="product productGatekeeper">
-            <div className="productImage productMockup">
-              <span className="productStatus">COMING SOON</span>
-
-              <Image
-                className="productMockupFront"
-                src="/lg-gatekeeper-front-v3.png"
-                alt="LG Gatekeeper Shirt front"
-                fill
-                quality={100}
-                sizes="(max-width: 800px) 100vw, 33vw"
-              />
-
-              <Image
-                className="productMockupBack"
-                src="/lg-gatekeeper-back-v3.png"
-                alt="LG Gatekeeper Shirt back"
-                fill
-                quality={100}
-                sizes="(max-width: 800px) 100vw, 33vw"
-              />
-            </div>
-
-            <div className="productInfo">
-              <h3>LG GATEKEEPER SHIRT</h3>
-              <p>TAN</p>
-            </div>
-          </article>
+              <div className="productInfo">
+                <h3>{product.name}</h3>
+                <p>{product.color}</p>
+              </div>
+            </article>
+          ))}
         </div>
       </section>
 
@@ -221,15 +222,93 @@ export default function Home() {
         <div className="footerFeature">
           <h2>LAMBO GEEZ</h2>
 
-          <div className="footerInstagram">
-            <p>VISIT OUR INSTAGRAM</p>
+          <div className="footerSocials">
+            <a
+              className="socialRow"
+              href="https://music.apple.com/ca/artist/lambo-geez/1781774148"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              <span className="socialIcon socialIconApple">
+                <Image
+                  src="/apple-music.png"
+                  alt=""
+                  width={64}
+                  height={64}
+                  quality={100}
+                />
+              </span>
+
+              <span className="socialText">
+                <span className="socialPlatform">APPLE MUSIC</span>
+                <span className="socialHandle">LAMBO GEEZ</span>
+              </span>
+            </a>
 
             <a
+              className="socialRow"
+              href="https://open.spotify.com/artist/5bgjOavjNLTuKVBUjGiTwh"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              <span className="socialIcon socialIconSpotify">
+                <Image
+                  src="/spotify.png"
+                  alt=""
+                  width={64}
+                  height={64}
+                  quality={100}
+                />
+              </span>
+
+              <span className="socialText">
+                <span className="socialPlatform">SPOTIFY</span>
+                <span className="socialHandle">LAMBO GEEZ</span>
+              </span>
+            </a>
+
+            <a
+              className="socialRow"
               href="https://www.instagram.com/lambogeezmusic/"
               target="_blank"
               rel="noopener noreferrer"
             >
-              @LAMBOGEEZMUSIC
+              <span className="socialIcon socialIconInstagram">
+                <Image
+                  src="/instagram.png"
+                  alt=""
+                  width={64}
+                  height={64}
+                  quality={100}
+                />
+              </span>
+
+              <span className="socialText">
+                <span className="socialPlatform">INSTAGRAM</span>
+                <span className="socialHandle">@LAMBOGEEZMUSIC</span>
+              </span>
+            </a>
+
+            <a
+              className="socialRow"
+              href="https://www.youtube.com/@lambogeezmusic"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              <span className="socialIcon socialIconYoutube">
+                <Image
+                  src="/youtube.png"
+                  alt=""
+                  width={64}
+                  height={64}
+                  quality={100}
+                />
+              </span>
+
+              <span className="socialText">
+                <span className="socialPlatform">YOUTUBE</span>
+                <span className="socialHandle">LAMBO GEEZ</span>
+              </span>
             </a>
           </div>
         </div>
